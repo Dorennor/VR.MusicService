@@ -6,6 +6,13 @@
         xmlns:local="clr-namespace:VR.MusicService.View.Windows"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-    </Grid>
+
+    <StackPanel Margin="10">
+        <Label Name="lblStatus" Content="Not playing..." HorizontalContentAlignment="Center" Margin="5" />
+        <WrapPanel HorizontalAlignment="Center">
+            <Button Name="btnPlay" Click="btnPlay_Click">Play</Button>
+            <Button Name="btnPause" Margin="5,0" Click="btnPause_Click">Pause</Button>
+            <Button Name="btnStop" Click="btnStop_Click">Stop</Button>
+        </WrapPanel>
+    </StackPanel>
 </Window>

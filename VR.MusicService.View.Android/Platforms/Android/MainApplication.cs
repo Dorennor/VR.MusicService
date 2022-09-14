@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace VR.MusicService.View.Android;
+namespace VR.MusicService.View.Android.Platforms.Android;
 
 [Application]
 public class MainApplication : MauiApplication
