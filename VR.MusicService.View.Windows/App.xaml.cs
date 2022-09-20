@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Windows;
-using Microsoft.Extensions.Configuration;
+﻿using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -9,16 +7,9 @@ namespace VR.MusicService.View.Windows;
 public partial class App : Application
 {
     private readonly IHost _host;
-    private IConfiguration Configuration { get; }
 
     public App()
     {
-        var builder = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-
-        Configuration = builder.Build();
-
         _host = Host.CreateDefaultBuilder().ConfigureServices(ConfigureServices).Build();
     }
 

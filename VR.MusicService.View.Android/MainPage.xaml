@@ -7,9 +7,37 @@
         <VerticalStackLayout
             Spacing="25"
             Padding="30,0"
-            VerticalOptions="Center">
+            VerticalOptions="End">
 
-            <Image
+            <Border 
+                Stroke="Black"
+                StrokeThickness="1">
+
+                <HorizontalStackLayout
+                    Spacing="30"
+                    Padding="5"
+                    HorizontalOptions="Center">
+
+                    <Button
+                        x:Name="Test_1"
+                        Text="Test_1"
+                        Margin="0, 10, 0, 10" />
+
+                    <Button
+                        x:Name="Test_2"
+                        Text="Test_2"
+                        Margin="0, 10, 0, 10" />
+
+                    <Button
+                        x:Name="Test_3"
+                        Text="Test_3"
+                        Margin="0, 10, 0, 10" />
+                </HorizontalStackLayout>
+            </Border>
+
+            
+
+            <!--<Image
                 Source="dotnet_bot.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 HeightRequest="200"
@@ -33,7 +61,7 @@
                 Text="Click me"
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center" />-->
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
