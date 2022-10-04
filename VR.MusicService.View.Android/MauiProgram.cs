@@ -1,4 +1,6 @@
-﻿namespace VR.MusicService.View.Android;
+﻿using Plugin.Maui.Audio;
+
+namespace VR.MusicService.View.Android;
 
 public static class MauiProgram
 {
@@ -13,6 +15,9 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
+
+        builder.Services.AddSingleton(AudioManager.Current);
+        builder.Services.AddSingleton<MainPage>();
 
         return builder.Build();
     }

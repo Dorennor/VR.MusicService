@@ -1,23 +1,54 @@
-﻿namespace VR.MusicService.View.Android;
+﻿using Plugin.Maui.Audio;
+
+namespace VR.MusicService.View.Android;
 
 public partial class MainPage : ContentPage
 {
-    private int count = 0;
+    private readonly IAudioManager _audioManager;
+    private IAudioPlayer _audioPlayer;
+    private FileResult fileResult;
 
-    public MainPage()
+    public MainPage(IAudioManager audioManager)
     {
         InitializeComponent();
+
+        _audioManager = audioManager;
     }
 
-    //private void OnCounterClicked(object sender, EventArgs e)
-    //{
-    //    count++;
+    private async void OpenFileButton_OnClicked(object sender, EventArgs e)
+    {
+        PickOptions options = new()
+        {
+            PickerTitle = "Please select a file",
+            FileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
+                {
+                    { DevicePlatform.Android, new[] { "audio/mpeg" } }
+                })
+        };
 
-    //    if (count == 1)
-    //        CounterBtn.Text = $"Clicked {count} time";
-    //    else
-    //        CounterBtn.Text = $"Clicked {count} times";
+        fileResult = await FilePicker.Default.PickAsync(options);
+    }
 
-    //    SemanticScreenReader.Announce(CounterBtn.Text);
-    //}
+    private async void PlayButton_OnClicked(object sender, EventArgs e)
+    {
+        if (fileResult != null)
+        {
+            FileNameLabel.Text = $"{fileResult.FileName}";
+
+            await using var stream = await fileResult.OpenReadAsync();
+
+            _audioPlayer = _audioManager.CreatePlayer(stream);
+            _audioPlayer.Play();
+        }
+    }
+
+    private void PauseButton_OnClicked(object sender, EventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void StopButton_OnClicked(object sender, EventArgs e)
+    {
+        _audioPlayer.Stop();
+    }
 }

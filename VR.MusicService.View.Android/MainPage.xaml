@@ -1,17 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="VR.MusicService.View.Android.MainPage">
+             x:Class="VR.MusicService.View.Android.MainPage"
+             BackgroundColor="#1f1f1f">
 
     <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="End">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
 
-            <Border 
-                Stroke="Black"
-                StrokeThickness="1">
+            <Border
+                Grid.Row="0"
+                Stroke="White"
+                BackgroundColor="#1f1f1f"
+                StrokeThickness="2">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"></RoundRectangle>
+                </Border.StrokeShape>
+
+                <Label
+                    x:Name="FileNameLabel"
+                    Text="Empty"
+                    TextColor="White"
+                    HorizontalTextAlignment="Center"
+                    Margin="10, 10, 10, 10" />
+            </Border>
+
+            <Border
+                Grid.Row="2"
+                Stroke="White"
+                BackgroundColor="#1f1f1f"
+                StrokeThickness="2">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20"></RoundRectangle>
+                </Border.StrokeShape>
 
                 <HorizontalStackLayout
                     Spacing="30"
@@ -19,49 +46,30 @@
                     HorizontalOptions="Center">
 
                     <Button
-                        x:Name="Test_1"
-                        Text="Test_1"
+                        x:Name="PlayButton"
+                        Text="Play"
+                        Clicked="PlayButton_OnClicked"
                         Margin="0, 10, 0, 10" />
 
                     <Button
-                        x:Name="Test_2"
-                        Text="Test_2"
+                        x:Name="PauseButton"
+                        Text="Pause"
+                        Clicked="PauseButton_OnClicked"
                         Margin="0, 10, 0, 10" />
 
                     <Button
-                        x:Name="Test_3"
-                        Text="Test_3"
+                        x:Name="StopButton"
+                        Text="Stop"
+                        Clicked="StopButton_OnClicked"
+                        Margin="0, 10, 0, 10" />
+
+                    <Button
+                        x:Name="OpenFileButton"
+                        Text="Open file"
+                        Clicked="OpenFileButton_OnClicked"
                         Margin="0, 10, 0, 10" />
                 </HorizontalStackLayout>
             </Border>
-
-            
-
-            <!--<Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />-->
-        </VerticalStackLayout>
+        </Grid>
     </ScrollView>
 </ContentPage>
