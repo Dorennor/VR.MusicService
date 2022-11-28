@@ -6,7 +6,8 @@ public partial class MainPage : ContentPage
 {
     private readonly IAudioManager _audioManager;
     private IAudioPlayer _audioPlayer;
-    private FileResult fileResult;
+    private FileResult _fileResult;
+    private double _pausePosition = default;
 
     public MainPage(IAudioManager audioManager)
     {
@@ -26,29 +27,32 @@ public partial class MainPage : ContentPage
                 })
         };
 
-        fileResult = await FilePicker.Default.PickAsync(options);
+        _fileResult = await FilePicker.Default.PickAsync(options);
     }
 
     private async void PlayButton_OnClicked(object sender, EventArgs e)
     {
-        if (fileResult != null)
+        if (_fileResult != null)
         {
-            FileNameLabel.Text = $"{fileResult.FileName}";
+            FileNameLabel.Text = $"{_fileResult.FileName}";
 
-            await using var stream = await fileResult.OpenReadAsync();
+            await using var stream = await _fileResult.OpenReadAsync();
 
             _audioPlayer = _audioManager.CreatePlayer(stream);
+            _audioPlayer.Seek(_pausePosition);
             _audioPlayer.Play();
         }
     }
 
     private void PauseButton_OnClicked(object sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        _pausePosition = _audioPlayer.CurrentPosition;
+        _audioPlayer.Pause();
     }
 
     private void StopButton_OnClicked(object sender, EventArgs e)
     {
         _audioPlayer.Stop();
+        _pausePosition = 0;
     }
 }
