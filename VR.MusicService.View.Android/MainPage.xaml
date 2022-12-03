@@ -24,7 +24,7 @@
 
                 <Label
                     x:Name="FileNameLabel"
-                    Text="Empty"
+                    Text="{Binding FileName}"
                     TextColor="White"
                     HorizontalTextAlignment="Center"
                     Margin="10, 10, 10, 10" />
@@ -48,25 +48,25 @@
                     <Button
                         x:Name="PlayButton"
                         Text="Play"
-                        Clicked="PlayButton_OnClicked"
+                        Command="{Binding PlayCommand}"
                         Margin="0, 10, 0, 10" />
 
                     <Button
                         x:Name="PauseButton"
                         Text="Pause"
-                        Clicked="PauseButton_OnClicked"
+                        Command="{Binding PauseCommand}"
+                        Margin="0, 10, 0, 10" />
+
+                    <Button
+                        x:Name="ResumeButton"
+                        Text="Resume"
+                        Command="{Binding ResumeCommand}"
                         Margin="0, 10, 0, 10" />
 
                     <Button
                         x:Name="StopButton"
                         Text="Stop"
-                        Clicked="StopButton_OnClicked"
-                        Margin="0, 10, 0, 10" />
-
-                    <Button
-                        x:Name="OpenFileButton"
-                        Text="Open file"
-                        Clicked="OpenFileButton_OnClicked"
+                        Command="{Binding StopCommand}"
                         Margin="0, 10, 0, 10" />
                 </HorizontalStackLayout>
             </Border>

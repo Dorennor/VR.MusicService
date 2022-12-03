@@ -1,4 +1,6 @@
-﻿using Plugin.Maui.Audio;
+﻿using VR.MusicService.ViewModel.Interfaces;
+using VR.MusicService.ViewModel.Services;
+using VR.MusicService.ViewModel.ViewModels;
 
 namespace VR.MusicService.View.Android;
 
@@ -8,16 +10,14 @@ public static class MauiProgram
     {
         var builder = MauiApp.CreateBuilder();
 
-        builder
-            .UseMauiApp<App>()
-            .ConfigureFonts(fonts =>
-            {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-            });
+        builder.UseMauiApp<App>();
 
-        builder.Services.AddSingleton(AudioManager.Current);
-        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<IMusicService, LocalMusicService>();
+        builder.Services.AddTransient<MainViewModel>();
+        builder.Services.AddTransient<MainPage>(services => new MainPage
+        {
+            BindingContext = services.GetService<MainViewModel>()
+        });
 
         return builder.Build();
     }
