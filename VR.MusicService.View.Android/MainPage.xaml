@@ -49,12 +49,14 @@
                         x:Name="PlayButton"
                         Text="Play"
                         Command="{Binding PlayCommand}"
+                        Clicked="PlayButton_OnClicked"
                         Margin="0, 10, 0, 10" />
 
                     <Button
                         x:Name="PauseButton"
                         Text="Pause"
                         Command="{Binding PauseCommand}"
+                        Clicked="PauseButton_OnClicked"
                         Margin="0, 10, 0, 10" />
 
                     <Button

@@ -1,58 +1,42 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Threading;
-using Microsoft.Win32;
+﻿using System.Windows;
+using System.Windows.Input;
 
 namespace VR.MusicService.View.Windows;
 
 public partial class MainWindow : Window
 {
-    private MediaPlayer mediaPlayer = new MediaPlayer();
-
     public MainWindow()
     {
         InitializeComponent();
-
-        OpenFileDialog openFileDialog = new OpenFileDialog();
-        openFileDialog.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*";
-
-        if (openFileDialog.ShowDialog() == true)
-        {
-            mediaPlayer.Open(new Uri(openFileDialog.FileName));
-        }
-
-        DispatcherTimer timer = new DispatcherTimer();
-
-        timer.Interval = TimeSpan.FromSeconds(1);
-        timer.Tick += timer_Tick;
-        timer.Start();
     }
 
-    private void timer_Tick(object sender, EventArgs e)
+    private void ExitButton_OnClick(object sender, RoutedEventArgs e)
     {
-        if (mediaPlayer.Source != null)
-        {
-            lblStatus.Content = String.Format("{0} / {1}", mediaPlayer.Position.ToString(@"mm\:ss"), mediaPlayer.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
-        }
-        else
-        {
-            lblStatus.Content = "No file selected...";
-        }
+        Close();
     }
 
-    private void btnPlay_Click(object sender, RoutedEventArgs e)
+    private void Minimize_OnClick(object sender, RoutedEventArgs e)
     {
-        mediaPlayer.Play();
+        WindowState = WindowState.Minimized;
     }
 
-    private void btnPause_Click(object sender, RoutedEventArgs e)
+    private void MainWindow_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-        mediaPlayer.Pause();
+        DragMove();
     }
 
-    private void btnStop_Click(object sender, RoutedEventArgs e)
+    private void PlayButton_OnClick(object sender, RoutedEventArgs e)
     {
-        mediaPlayer.Stop();
+        throw new System.NotImplementedException();
+    }
+
+    private void PauseButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void StopButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        throw new System.NotImplementedException();
     }
 }

@@ -19,11 +19,22 @@ public class MainViewModel : BasicViewModel
     {
         get => _playCommand ?? new RelayCommand(() =>
         {
-            var song = _musicService.GetRandomSong();
+            //var song = _musicService.GetRandomSong();
 
             //_musicService.Play(song);
 
-            FileName = song.FileName;
+            //string path = @"/storage/";
+
+            //DirectoryInfo directoryInfo = new DirectoryInfo(path);
+
+            //string result = "";
+            
+            //foreach (var item in directoryInfo.EnumerateDirectories())
+            //{
+            //    result += (item.Name + "\n");
+            //}
+            //var temp = AndroidX
+            //FileName = ;
         });
     }
 
