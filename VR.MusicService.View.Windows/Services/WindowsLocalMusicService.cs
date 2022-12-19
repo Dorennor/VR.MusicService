@@ -1,33 +1,60 @@
-﻿using VR.MusicService.Model.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Windows.Media;
+using VR.MusicService.Model.Interfaces;
 using VR.MusicService.Model.Models;
 using VR.MusicService.ViewModel.Interfaces;
 
-namespace VR.MusicService.ViewModel.Services;
+namespace VR.MusicService.View.Windows.Services;
 
 public class LocalMusicService : IMusicService
 {
-    private static readonly Random Random = new Random();
+    private static readonly Random Randomizer;
+    private static readonly MediaPlayer MediaPlayer;
+
+    static LocalMusicService()
+    {
+        Randomizer = new Random();
+        MediaPlayer = new MediaPlayer();
+    }
 
     public ISong CurrentSong { get; private set; }
 
+    public ISong Play()
+    {
+        MediaPlayer.Open(new Uri(CurrentSong.Path));
+        MediaPlayer.Play();
+
+        return CurrentSong;
+    }
+
     public ISong Play(ISong song)
     {
-        throw new NotImplementedException();
+        MediaPlayer.Open(new Uri(song.Path));
+        MediaPlayer.Play();
+
+        CurrentSong = song;
+
+        return CurrentSong;
     }
 
-    public ISong Pause(ISong song, out int time)
+    public ISong Pause(out int time)
     {
         throw new NotImplementedException();
     }
 
-    public ISong Resume(ISong song, int time)
+    public ISong Resume(int time)
     {
         throw new NotImplementedException();
     }
 
-    public ISong Stop(ISong song)
+    public ISong Stop()
     {
-        throw new NotImplementedException();
+        MediaPlayer.Stop();
+
+        return CurrentSong;
     }
 
     public ISong GetSong(Func<ISong, bool> finder)

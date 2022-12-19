@@ -1,6 +1,9 @@
 ﻿using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using VR.MusicService.View.Windows.Services;
+using VR.MusicService.ViewModel.Interfaces;
+using VR.MusicService.ViewModel.ViewModels;
 
 namespace VR.MusicService.View.Windows;
 
@@ -15,7 +18,13 @@ public partial class App : Application
 
     private void ConfigureServices(IServiceCollection services)
     {
-        services.AddSingleton<MainWindow>();
+        services.AddTransient<IDialogService, WindowsDialogService>();
+        services.AddTransient<IMusicService, LocalMusicService>();
+        services.AddSingleton<MainViewModel>();
+        services.AddSingleton<MainWindow>(serviceCollection => new MainWindow
+        {
+            DataContext = serviceCollection.GetService<MainViewModel>()
+        });
     }
 
     protected override async void OnStartup(StartupEventArgs e)

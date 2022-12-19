@@ -1,6 +1,4 @@
 ﻿using VR.MusicService.View.Android.Helpers;
-using Environment = Android.OS.Environment;
-using File = Java.IO.File;
 
 namespace VR.MusicService.View.Android;
 

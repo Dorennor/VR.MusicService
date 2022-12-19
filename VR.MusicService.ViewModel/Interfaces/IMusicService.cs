@@ -4,13 +4,15 @@ namespace VR.MusicService.ViewModel.Interfaces;
 
 public interface IMusicService
 {
+    ISong Play();
+
     ISong Play(ISong song);
 
-    ISong Pause(ISong song, out int time);
+    ISong Pause(out int time);
 
-    ISong Resume(ISong song, int time);
+    ISong Resume(int time);
 
-    ISong Stop(ISong song);
+    ISong Stop();
 
     ISong GetSong(Func<ISong, bool> finder);
 

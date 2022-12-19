@@ -25,9 +25,7 @@
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="Interfaces\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Resources\Fonts\" />
-    <Folder Include="Services\" />
     <Folder Include="Views\" />
   </ItemGroup>
 

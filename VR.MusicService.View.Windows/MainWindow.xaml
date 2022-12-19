@@ -3,6 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:helpers="clr-namespace:VR.MusicService.View.Windows.Helpers"
         mc:Ignorable="d"
         Height="500" Width="800"
         WindowStyle="None"
@@ -53,7 +54,8 @@
                     <Border BorderBrush="White" BorderThickness="0,0,1,0">
                         <Grid MinHeight="300" MinWidth="200">
                             <StackPanel Orientation="Vertical">
-                                <Button Content="Choose a file"
+                                <Button Content="Open file"
+                                        Command="{Binding OpenFileCommand}"
                                         Margin="10"
                                         Padding="5"
                                         FontSize="14"
@@ -72,45 +74,55 @@
             </Border>
 
             <Border BorderBrush="White" BorderThickness="0,0,0,0">
-                <StackPanel Orientation="Horizontal" MinHeight="150" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button Content="Play"
-                            Name="PlayButton"
-                            Click="PlayButton_OnClick"
-                            Margin="20"
-                            Padding="5"
-                            FontSize="14"
-                            Width="150"
-                            Height="50"
-                            Foreground="White"
-                            Background="Transparent"
-                            BorderBrush="White"
-                            BorderThickness="1" />
+                <StackPanel Orientation="Vertical">
+                    <Border BorderBrush="White" BorderThickness="0,0,0,1">
+                        <Label Content="{Binding CurrentSong, Converter={x:Static helpers:ISongToString.Converter}}"
+                               Margin="5"
+                               Padding="5"
+                               FontSize="14"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center" />
+                    </Border>
+                    <Border BorderBrush="White" BorderThickness="0,0,0,0">
+                        <StackPanel Orientation="Horizontal" MinHeight="115" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Button Content="Play"
+                                    Command="{Binding PlayCommand}"
+                                    Margin="20,10,20,10"
+                                    Padding="5"
+                                    FontSize="14"
+                                    Width="150"
+                                    Height="50"
+                                    Foreground="White"
+                                    Background="Transparent"
+                                    BorderBrush="White"
+                                    BorderThickness="1" />
 
-                    <Button Content="Pause"
-                            Name="PauseButton"
-                            Click="PauseButton_OnClick"
-                            Margin="20"
-                            Padding="5"
-                            FontSize="14"
-                            Width="150"
-                            Height="50"
-                            Foreground="White"
-                            Background="Transparent"
-                            BorderBrush="White"
-                            BorderThickness="1" />
+                            <Button Content="Pause"
+                                    Command="{Binding PauseCommand}"
+                                    Margin="20,10,20,10"
+                                    Padding="5"
+                                    FontSize="14"
+                                    Width="150"
+                                    Height="50"
+                                    Foreground="White"
+                                    Background="Transparent"
+                                    BorderBrush="White"
+                                    BorderThickness="1" />
 
-                    <Button Content="Stop"
-                            Name="StopButton"
-                            Click="StopButton_OnClick"
-                            Margin="20"
-                            Padding="5"
-                            FontSize="14"
-                            Width="150"
-                            Height="50"
-                            Foreground="White"
-                            Background="Transparent"
-                            BorderBrush="White"
-                            BorderThickness="1" />
+                            <Button Content="Stop"
+                                    Command="{Binding StopCommand}"
+                                    Margin="20,10,20,10"
+                                    Padding="5"
+                                    FontSize="14"
+                                    Width="150"
+                                    Height="50"
+                                    Foreground="White"
+                                    Background="Transparent"
+                                    BorderBrush="White"
+                                    BorderThickness="1" />
+                        </StackPanel>
+                    </Border>
                 </StackPanel>
             </Border>
         </StackPanel>

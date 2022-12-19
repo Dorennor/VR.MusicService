@@ -27,16 +27,13 @@ public partial class MainWindow : Window
 
     private void PlayButton_OnClick(object sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
     }
 
     private void PauseButton_OnClick(object sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
     }
 
     private void StopButton_OnClick(object sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
     }
 }
