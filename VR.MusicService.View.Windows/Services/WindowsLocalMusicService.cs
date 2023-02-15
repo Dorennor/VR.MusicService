@@ -50,11 +50,11 @@ public class LocalMusicService : IMusicService
         throw new NotImplementedException();
     }
 
-    public ISong Stop()
+    public ISong? Stop()
     {
         MediaPlayer.Stop();
 
-        return CurrentSong;
+        return null;
     }
 
     public ISong GetSong(Func<ISong, bool> finder)
