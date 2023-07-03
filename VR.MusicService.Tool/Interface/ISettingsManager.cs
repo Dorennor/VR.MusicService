@@ -2,10 +2,18 @@
 {
     public interface ISettingsManager
     {
-        string GetSettingByName(string name);
+        bool IsFirstStartup { get; set; }
 
-        void SetSettingByName(string name, string value);
+        void LoadSettings();
 
-        Dictionary<string, string> GetAllSettings();
+        Task LoadSettingsAsync();
+
+        void SynchronizeSettings();
+
+        Task SynchronizeSettingsAsync();
+
+        void SaveSettings();
+
+        Task SaveSettingsAsync();
     }
 }

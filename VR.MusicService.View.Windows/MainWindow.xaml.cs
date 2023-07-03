@@ -1,13 +1,18 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
+using VR.MusicService.Tool.Interface;
+using VR.MusicService.Tool.Services;
+
 namespace VR.MusicService.View.Windows;
 
 public partial class MainWindow : Window
 {
+    private readonly ISettingsManager _settingsManager;
+
     public MainWindow()
     {
-        InitializeComponent();
+        _settingsManager = new WindowsSettingsManager();
     }
 
     private void ExitButton_OnClick(object sender, RoutedEventArgs e)

@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using System.Windows;
+
 using Microsoft.Win32;
+
 using VR.MusicService.Model.Interfaces;
 using VR.MusicService.Model.Models;
 using VR.MusicService.ViewModel.Interfaces;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Media;
+
 using VR.MusicService.Model.Interfaces;
 using VR.MusicService.Model.Models;
 using VR.MusicService.ViewModel.Interfaces;
@@ -64,7 +65,7 @@ public class LocalMusicService : IMusicService
 
     public ISong GetRandomSong()
     {
-        string path = @"/storage/01D0-9200/Музыка";
+        string path = @"/storage/01D0-9200/Music";
 
         DirectoryInfo directoryInfo = new DirectoryInfo(path);
 
