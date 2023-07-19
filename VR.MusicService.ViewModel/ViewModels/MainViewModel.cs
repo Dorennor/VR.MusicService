@@ -1,5 +1,7 @@
-﻿using CommunityToolkit.Mvvm.Input;
-using System.Reflection;
+﻿using System.Reflection;
+
+using CommunityToolkit.Mvvm.Input;
+
 using VR.MusicService.Model.Interfaces;
 using VR.MusicService.Model.Models;
 using VR.MusicService.ViewModel.Abstractions;

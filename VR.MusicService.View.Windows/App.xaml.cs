@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Windows;
+
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Windows;
+
 using VR.MusicService.View.Windows.Services;
 using VR.MusicService.ViewModel.Interfaces;
 using VR.MusicService.ViewModel.ViewModels;

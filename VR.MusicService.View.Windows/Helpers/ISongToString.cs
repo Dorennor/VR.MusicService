@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
+
 using VR.MusicService.Model.Interfaces;
 
 namespace VR.MusicService.View.Windows.Helpers;
